@@ -6,24 +6,24 @@ import CounterCards from "@/components/enrollment-forecasting/CounterCards.vue";
 const strandList = ["ABM", "STEM", "HUMSS", "GAS", "HE-FBS", "ICT-CP"];
 const gradeLevelList = [11, 12];
 
-const cardData = [
+const dummyCardData = [
 	{
-		cardTitle: "Estimated Enrollees",
+		cardTitle: "Enrollees",
 		cardValue: "800",
 		cardColor: "#F3EDB5",
 	},
 	{
-		cardTitle: "Estimated Rooms Required",
+		cardTitle: "Rooms Required",
 		cardValue: "18",
 		cardColor: "#B5CAF3",
 	},
 	{
-		cardTitle: "Estimated Sections",
+		cardTitle: "Sections",
 		cardValue: "18",
 		cardColor: "#EDBDBD",
 	},
 	{
-		cardTitle: "Estimated Faculty Demand",
+		cardTitle: "Faculty Demand",
 		cardValue: "40",
 		cardColor: "#BEF3B5",
 	},
@@ -39,7 +39,7 @@ const cardData = [
 		</div>
 		<div class="counter-cards">
 			<CounterCards
-				v-for="card in cardData"
+				v-for="card in dummyCardData"
 				:key="card"
 				:card-title="card.cardTitle"
 				:card-value="card.cardValue"
