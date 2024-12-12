@@ -4,6 +4,16 @@
 -- ------------------------------------------------------
 -- Server version	8.0.35
 
+-- Age Database Setup
+DROP DATABASE IF EXISTS `classmaster`;
+CREATE DATABASE `classmaster`;
+USE `classmaster`;
+
+CREATE USER 'admin'@'localhost';
+GRANT ALL ON *.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+-- Age Database Setup End
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
