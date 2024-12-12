@@ -20,4 +20,10 @@ npm run build
 
 ### Customize configuration
 
+```
+npm run forecast-server
+```
+
+### locally runs temporary enrollment forecast server
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
