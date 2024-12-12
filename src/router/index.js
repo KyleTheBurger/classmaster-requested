@@ -16,7 +16,12 @@ import CohortAssignment from "@/views/Management/CohortAssignment.vue";
 import ClassSectioning from "@/views/ClassSectioning.vue";
 import CohortLoading from "@/views/CohortLoading.vue";
 import Scheduling from "@/views/Scheduling.vue";
-import EnrollmentForecasting from "@/views/EnrollmentForecasting.vue";
+
+import Summary from "@/views/EnrollmentForecasting/Summary.vue";
+import History from "@/views/EnrollmentForecasting/History.vue";
+import Allocation from "@/views/EnrollmentForecasting/Allocation.vue";
+import Forecast from "@/views/EnrollmentForecasting/Forecast.vue";
+
 const routes = [
 	{
 		path: "/",
@@ -91,10 +96,27 @@ const routes = [
 		name: "scheduling",
 		component: Scheduling,
 	},
+
+	// Enrollment Forecasting
 	{
-		path: "/enrollmentForecasting",
-		name: "enrollmentForecasting",
-		component: EnrollmentForecasting,
+		path: "/enrollment-forecasting/summary",
+		name: "summary",
+		component: Summary,
+	},
+	{
+		path: "/enrollment-forecasting/history",
+		name: "history",
+		component: History,
+	},
+	{
+		path: "/enrollment-forecasting/allocation",
+		name: "allocation",
+		component: Allocation,
+	},
+	{
+		path: "/enrollment-forecasting/forecast",
+		name: "forecast",
+		component: Forecast,
 	},
 ];
 

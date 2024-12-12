@@ -49,6 +49,17 @@
 				></v-list-item>
 			</v-list-group>
 
+			<!-- FORECASTING -->
+			<v-list-item
+				title="Summary"
+				value="summary"
+				:to="{ name: 'summary' }"
+			>
+				<template v-slot:prepend>
+					<v-icon>mdi-chart-areaspline</v-icon>
+				</template>
+			</v-list-item>
+
 			<!-- Registration -->
 			<v-list-group value="Registration" :fluid="rail">
 				<template v-slot:activator="{ props }">
@@ -115,16 +126,6 @@
 			>
 				<template v-slot:prepend>
 					<v-icon>mdi-calendar</v-icon>
-				</template>
-			</v-list-item>
-			<!-- FORECASTING -->
-			<v-list-item
-				title="Enrollment Forecasting"
-				value="enrollmentForecasting"
-				:to="{ name: 'enrollmentForecasting' }"
-			>
-				<template v-slot:prepend>
-					<v-icon>mdi-chart-areaspline</v-icon>
 				</template>
 			</v-list-item>
 		</v-list>
@@ -248,3 +249,47 @@ export default {
 	margin: 0px;
 }
 </style>
+
+<!-- FORECASTING - Multiline -->
+<!-- <v-list-group value="Forecasting" :fluid="rail">
+	<template v-slot:activator="{ props }">
+		<v-list-item
+			v-bind="props"
+			prepend-icon="mdi-chart-areaspline"
+			title="Forecasting"
+		></v-list-item>
+	</template>
+
+	<v-list-item
+		v-for="router in enrollmentForecasting"
+		:key="router.i"
+		:prepend-icon="router.router_icon"
+		:title="router.title"
+		:value="router.title"
+		:to="{ name: router.router_name }"
+	></v-list-item>
+</v-list-group> -->
+
+<!-- enrollmentForecasting: [
+	{
+		title: "Summary",
+		router_icon: "mdi-view-dashboard",
+		router_name: "enrollmentForecasting",
+	},
+	{
+		title: "History",
+		router_icon: "mdi-format-list-bulleted",
+		router_name: "enrollmentForecasting",
+	},
+	{
+		title: "Allocation",
+		router_icon: "mdi-school",
+		router_name: "enrollmentForecasting",
+	},
+	{
+		title: "Forecast",
+		router_icon: "mdi-chart-multiple",
+		router_name: "enrollmentForecasting",
+	},
+], -->
+<!-- FORECASTING - Multiline End -->

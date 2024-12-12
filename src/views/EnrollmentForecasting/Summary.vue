@@ -56,7 +56,9 @@ var loadForecastingData = async () => {
 		return cards;
 	};
 
-	forecastingData["enrolees"] = convertToStats([131, 197, 128, 108, 93, 113]);
+	forecastingData["enrollees"] = convertToStats([
+		131, 197, 128, 108, 93, 113,
+	]);
 	forecastingData["sections"] = convertToStats([3, 4, 3, 3, 2, 3]);
 	forecastingData["rooms"] = convertToStats([3, 4, 3, 3, 2, 3]);
 	forecastingData["rooms"].push(Stat("Lab", 2));
