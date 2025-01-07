@@ -1,7 +1,4 @@
 <script setup>
-import EnrollmentChart from "@/components/enrollment-forecasting/EnrollmentChart.vue";
-import EnrollmentHistory from "@/components/enrollment-forecasting/EnrollmentHistory.vue";
-import CounterCards from "@/components/enrollment-forecasting/CounterCards.vue";
 import { reactive, onMounted } from "vue";
 import axios from "axios";
 
@@ -71,10 +68,7 @@ var loadForecastingData = async () => {
 <template>
 	<div v-if="!state.isLoading" class="container">
 		<h1>Enrollment Forecasting</h1>
-		<div class="content-views">
-			<EnrollmentHistory />
-			<EnrollmentChart />
-		</div>
+		<div class="content-views"></div>
 		<div class="counter-cards">
 			<div class="d-flex justify-space-around">
 				<v-btn variant="outlined" to="/enrollment-forecasting/history">
@@ -90,13 +84,6 @@ var loadForecastingData = async () => {
 					Forecast
 				</v-btn>
 			</div>
-			<!-- <CounterCards
-				v-for="card in dummyCardData"
-				:key="card"
-				:card-title="card.cardTitle"
-				:card-value="card.cardValue"
-				:card-color="card.cardColor"
-			/> -->
 		</div>
 	</div>
 </template>
