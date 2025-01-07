@@ -76,6 +76,20 @@ var loadForecastingData = async () => {
 			<EnrollmentChart />
 		</div>
 		<div class="counter-cards">
+			<div class="d-flex justify-space-around">
+				<v-btn variant="outlined" to="/enrollment-forecasting/history">
+					History
+				</v-btn>
+				<v-btn
+					variant="outlined"
+					to="/enrollment-forecasting/allocation"
+				>
+					Allocation
+				</v-btn>
+				<v-btn variant="outlined" to="/enrollment-forecasting/forecast">
+					Forecast
+				</v-btn>
+			</div>
 			<!-- <CounterCards
 				v-for="card in dummyCardData"
 				:key="card"

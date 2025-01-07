@@ -37,10 +37,10 @@ export default {
 				classSectioning: "Class Sectioning",
 				cohortLoading: "Cohort Loading",
 				scheduling: "Scheduling",
-				summary: "Forecasting Summary",
-				allocation: "Student Allocation",
-				history: "Enrollment History",
-				forecast: "Enrollment Forecast",
+				forecastingSummary: "Forecasting Summary",
+				studentAllocation: "Student Allocation",
+				forecastingHistory: "Enrollment History",
+				forecastDetails: "Enrollment Forecast",
 			};
 
 			this.headerTitle = headerTitles[routerName] || "Dashboard";

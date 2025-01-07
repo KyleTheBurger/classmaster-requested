@@ -100,22 +100,22 @@ const routes = [
 	// Enrollment Forecasting
 	{
 		path: "/enrollment-forecasting/summary",
-		name: "summary",
+		name: "forecastingSummary",
 		component: Summary,
 	},
 	{
 		path: "/enrollment-forecasting/history",
-		name: "history",
+		name: "forecastingHistory",
 		component: History,
 	},
 	{
 		path: "/enrollment-forecasting/allocation",
-		name: "allocation",
+		name: "studentAllocation",
 		component: Allocation,
 	},
 	{
 		path: "/enrollment-forecasting/forecast",
-		name: "forecast",
+		name: "forecastDetails",
 		component: Forecast,
 	},
 ];

@@ -21,7 +21,7 @@ npm run build
 ### Customize configuration
 
 ```
-npm run forecast-server
+npm run ef-server
 ```
 
 ### locally runs temporary enrollment forecast server
