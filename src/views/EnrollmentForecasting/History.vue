@@ -244,9 +244,14 @@ onMounted(async () => {
 					</template>
 				</v-data-table-virtual>
 			</v-row>
-			<v-dialog max-width="max-content">
+			<v-dialog v-if="!isPreview" max-width="max-content">
 				<template v-slot:activator="{ props: activatorProps }">
-					<v-row class="d-flex justify-end py-5">
+					<v-row class="d-flex justify-end py-5 ga-5">
+						<v-btn
+							prepend-icon="mdi-content-save-outline"
+							color="primary"
+							>Export
+						</v-btn>
 						<v-btn
 							prepend-icon="mdi-plus"
 							color="success"

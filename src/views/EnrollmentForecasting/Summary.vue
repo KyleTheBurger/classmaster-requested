@@ -68,14 +68,12 @@ var loadForecastingData = async () => {
 </script>
 
 <template>
-	<div v-if="!state.isLoading" class="container">
-		<h1>Enrollment Forecasting</h1>
-		<div class="content-views"></div>
+	<div v-if="!state.isLoading" class="d-flex flex-column container ga-5">
+		<h1 class="mx-2 mt-5 mb-2">Forecasting Summary</h1>
 
 		<v-card>
 			<History :isPreview="true" class="mb-0" />
 		</v-card>
-
 		<v-card>
 			<Allocation :isPreview="true" class="mb-0" />
 		</v-card>
