@@ -1,5 +1,4 @@
 <script setup>
-import { watchEffect } from "vue";
 import { ref, onMounted } from "vue";
 
 const props = defineProps({
@@ -25,78 +24,78 @@ const props = defineProps({
 	},
 	updateHandler: {
 		type: Function,
-		default: (val) => {},
+		default: (newVal) => {},
+	},
+	deleteHandler: {
+		type: Function,
+		default: () => {},
 	},
 });
 
-const isEditing = ref(false);
-
-const toggleEdit = () => {
-	isEditing.value = !isEditing;
-	console.log("toggled");
-};
+const deleteCheck = ref(false);
 
 onMounted(async () => {});
 </script>
 
 <template>
-	<div class="d-flex justify-start align-center ga-4 ress stat">
-		<v-icon v-if="isMain" class="icon" :icon="icon" size="48"></v-icon>
-		<v-icon v-else class="icon" :icon="icon" size="32"></v-icon>
-		<form class="d-flex flex-column ga-1">
-			<span v-if="!isEditing">{{ props.value }} </span>
-			<v-input
-				type="number"
-				v-else
-				model-view="props.value"
-				hide-spinnerbox
-			/>
-			<div class="d-flex justify-end align-center">
-				<p>{{ props.label }}</p>
-				<v-btn
-					v-if="isEditing.value"
-					icon="mdi-content-save-outline"
-					variant="plain"
-					density="comfortable"
-					size="small"
-					dense="compact"
-					@click="toggleEdit"
-				></v-btn>
-				<v-btn
-					v-if="isEditing"
-					icon="mdi-close"
-					variant="plain"
-					density="comfortable"
-					size="small"
-					dense="compact"
-					@click="toggleEdit"
-				></v-btn>
-			</div>
-		</form>
+	<form class="d-flex px-5 py-1 align-center ga-1">
+		<v-number-input
+			:class="[props.isMain ? 'main' : '']"
+			type="number"
+			:label="deleteCheck ? 'Delete ' + label + '?' : label"
+			:prepend-icon="icon"
+			variant="underlined"
+			v-model="props.value"
+			@update:model-value="updateHandler"
+			hide-spin-buttons
+			:readonly="readonly"
+		></v-number-input>
 		<v-btn
-			v-if="!readonly && !isEditing"
-			icon="mdi-pencil"
-			variant="plain"
-			density="comfortable"
+			v-if="!deleteCheck && !isMain"
+			icon="mdi-delete-empty-outline"
+			variant="text"
+			density="compact"
+			@click="deleteCheck = true"
 		></v-btn>
-	</div>
+		<v-btn
+			v-if="deleteCheck"
+			icon="mdi-check"
+			variant="default"
+			density="compact"
+			color="error"
+			@click="
+				() => {
+					deleteHandler();
+				}
+			"
+		></v-btn>
+		<v-btn
+			v-if="deleteCheck"
+			icon="mdi-close"
+			color="success"
+			variant="tonal"
+			density="compact"
+			@click="deleteCheck = false"
+		></v-btn>
+	</form>
 </template>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
 
 .stat {
-	width: 100%;
 	font-family: "Karla", serif;
 	font-optical-sizing: auto;
 	font-size: 16px;
 	line-height: 1;
-	padding: 1rem;
 }
 
-span {
+span,
+input {
 	font-size: 32px;
 	line-height: 0.7;
+	width: min-content;
+	display: inline-block;
 }
 
 p {
@@ -108,5 +107,39 @@ p {
 		font-size: 48px;
 		line-height: 0.7;
 	}
+}
+.v-text-field >>> input {
+	font-family: "Karla", serif;
+	font-size: 32px;
+	font-weight: 400;
+	padding: 0;
+	margin-top: 0.8rem;
+	margin-bottom: 0rem;
+	min-width: max-content;
+}
+
+.v-text-field.main >>> input {
+	font-weight: 700;
+	font-size: 48px;
+	line-height: 1;
+}
+
+.v-text-field >>> label {
+	font-family: "Karla", serif;
+	font-size: 0.8em;
+	line-height: 1;
+}
+
+.v-text-field.main >>> label {
+	font-family: "Karla", serif;
+	font-size: 1em;
+}
+
+.v-text-field >>> i {
+	font-size: 32px;
+}
+
+.v-text-field >>> .v-number-input__control {
+	display: none;
 }
 </style>
