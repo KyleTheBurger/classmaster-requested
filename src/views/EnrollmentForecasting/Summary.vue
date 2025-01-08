@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, onMounted } from "vue";
 import axios from "axios";
+import Allocation from "./Allocation.vue";
 
 const state = reactive({
 	historicalData: {},
@@ -85,5 +86,9 @@ var loadForecastingData = async () => {
 				</v-btn>
 			</div>
 		</div>
+
+		<v-card>
+			<Allocation :isPreview="true" class="mb-0" />
+		</v-card>
 	</div>
 </template>

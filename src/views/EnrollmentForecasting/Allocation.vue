@@ -1,8 +1,13 @@
 <script setup>
 import ForecastingStatistic from "@/components/enrollment-forecasting/ForecastingStatistic.vue";
-import { computed } from "vue";
-import { onMounted } from "vue";
-import { reactive } from "vue";
+import { computed, defineProps, onMounted, reactive } from "vue";
+
+const props = defineProps({
+	isPreview: {
+		type: Boolean,
+		default: false,
+	},
+});
 
 const state = reactive({
 	enrolleeStats: [],
@@ -114,8 +119,9 @@ const calculateRooms = () => {
 </script>
 
 <template>
-	<v-container v-if="!state.isLoading" class="container">
+	<v-container v-if="!state.isLoading" class="pb-10 container">
 		<v-card
+			v-if="!isPreview"
 			class="mb-10 px-10 pt-10 rounded-lg elevation-3 header-box round"
 		>
 			<v-row><h1>Resource Allocation</h1></v-row>
@@ -155,6 +161,7 @@ const calculateRooms = () => {
 					:value="enrolleeSum"
 				></ForecastingStatistic>
 				<v-btn
+					v-if="!isPreview"
 					prepend-icon="mdi-reload"
 					color="accent"
 					class="mx-5 my-4"
@@ -162,6 +169,7 @@ const calculateRooms = () => {
 					>Reload Prediction</v-btn
 				>
 				<ForecastingStatistic
+					v-if="!isPreview"
 					v-for="stat in state.enrolleeStats"
 					:key="stat.label"
 					:label="stat.label"
@@ -194,6 +202,7 @@ const calculateRooms = () => {
 					:value="sectionSum"
 				></ForecastingStatistic>
 				<v-btn
+					v-if="!isPreview"
 					prepend-icon="mdi-reload"
 					color="accent"
 					class="mx-5 my-4"
@@ -201,6 +210,7 @@ const calculateRooms = () => {
 					>Recalculate Sections</v-btn
 				>
 				<ForecastingStatistic
+					v-if="!isPreview"
 					v-for="stat in state.sectionStats"
 					:key="stat.label"
 					:label="stat.label"
@@ -234,6 +244,7 @@ const calculateRooms = () => {
 					:value="roomSum"
 				></ForecastingStatistic>
 				<v-btn
+					v-if="!isPreview"
 					prepend-icon="mdi-reload"
 					color="accent"
 					class="mx-5 my-4"
@@ -241,6 +252,7 @@ const calculateRooms = () => {
 					>Recalculate Rooms</v-btn
 				>
 				<ForecastingStatistic
+					v-if="!isPreview"
 					v-for="stat in state.roomStats"
 					:key="stat.label"
 					:label="stat.label"
@@ -274,8 +286,8 @@ const calculateRooms = () => {
 	background-color: #64646466;
 	min-width: 250px;
 	border-radius: 8px;
-	margin-top: 0.5rem;
-	margin-bottom: 8rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 .card-column:nth-child(1) {
