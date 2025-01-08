@@ -2,6 +2,7 @@
 import { reactive, onMounted } from "vue";
 import axios from "axios";
 import Allocation from "./Allocation.vue";
+import History from "./History.vue";
 
 const state = reactive({
 	historicalData: {},
@@ -70,22 +71,10 @@ var loadForecastingData = async () => {
 	<div v-if="!state.isLoading" class="container">
 		<h1>Enrollment Forecasting</h1>
 		<div class="content-views"></div>
-		<div class="counter-cards">
-			<div class="d-flex justify-space-around">
-				<v-btn variant="outlined" to="/enrollment-forecasting/history">
-					History
-				</v-btn>
-				<v-btn
-					variant="outlined"
-					to="/enrollment-forecasting/allocation"
-				>
-					Allocation
-				</v-btn>
-				<v-btn variant="outlined" to="/enrollment-forecasting/forecast">
-					Forecast
-				</v-btn>
-			</div>
-		</div>
+
+		<v-card>
+			<History :isPreview="true" class="mb-0" />
+		</v-card>
 
 		<v-card>
 			<Allocation :isPreview="true" class="mb-0" />
