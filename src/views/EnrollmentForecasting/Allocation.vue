@@ -1,6 +1,6 @@
 <script setup>
 import ForecastingStatistic from "@/components/enrollment-forecasting/ForecastingStatistic.vue";
-import { computed, defineProps, onMounted, reactive } from "vue";
+import { computed, onMounted, reactive } from "vue";
 
 const props = defineProps({
 	isPreview: {
@@ -121,10 +121,11 @@ const calculateRooms = () => {
 <template>
 	<v-container v-if="!state.isLoading" class="pb-10 container">
 		<v-card
+			title="Resource Allocation"
 			v-if="!isPreview"
-			class="mb-10 px-10 pt-10 rounded-lg elevation-3 header-box round"
+			class="mb-10 px-10 pt-1 rounded-lg elevation-3 header-box round"
 		>
-			<v-row><h1>Resource Allocation</h1></v-row>
+			<!-- <v-row><h1>Resource Allocation</h1></v-row> -->
 			<v-row class="d-flex justify-space-between w-100 align-center ga-5">
 				<v-col class="d-flex gap-3 align-center">
 					<div class="font-weight-bold">
@@ -302,7 +303,12 @@ const calculateRooms = () => {
 	background-color: #e3d54f66;
 }
 
-.header-box {
+.v-card {
 	font-family: "Inter", serif;
+}
+
+.v-card:deep(.v-card-title) {
+	font-weight: 600;
+	font-size: 32px;
 }
 </style>
