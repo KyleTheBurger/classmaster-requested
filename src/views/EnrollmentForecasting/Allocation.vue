@@ -191,6 +191,9 @@ const calculateRooms = () => {
 						}
 					"
 				></ForecastingStatistic>
+				<v-btn v-if="!isPreview" color="accent" class="mx-5 my-4"
+					><v-icon icon="mdi-plus" size="24"></v-icon
+				></v-btn>
 			</v-col>
 			<v-col id="sectionsCol" class="card-column elevation-3">
 				<ForecastingStatistic
@@ -232,7 +235,9 @@ const calculateRooms = () => {
 							}
 						}
 					"
-				></ForecastingStatistic
+				></ForecastingStatistic>
+				<v-btn v-if="!isPreview" color="accent" class="mx-5 my-4"
+					><v-icon icon="mdi-plus" size="24"></v-icon></v-btn
 			></v-col>
 			<v-col id="roomsCol" class="card-column elevation-3">
 				<ForecastingStatistic
@@ -273,8 +278,12 @@ const calculateRooms = () => {
 							}
 						}
 					"
-				></ForecastingStatistic
-			></v-col>
+				></ForecastingStatistic>
+
+				<v-btn v-if="!isPreview" color="accent" class="mx-5 my-4"
+					><v-icon icon="mdi-plus" size="24"></v-icon
+				></v-btn>
+			</v-col>
 		</v-row>
 	</v-container>
 </template>
@@ -310,5 +319,21 @@ const calculateRooms = () => {
 .v-card:deep(.v-card-title) {
 	font-weight: 600;
 	font-size: 32px;
+}
+</style>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+.v-card {
+	font-family: "Inter", serif;
+}
+
+.v-card:deep(.v-card-title) {
+	font-weight: 600;
+	font-size: 32px;
+}
+
+.v-combobox {
+	width: 30%;
 }
 </style>

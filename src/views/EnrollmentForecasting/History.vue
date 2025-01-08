@@ -33,6 +33,36 @@ const virtualRows = computed(() => {
 	});
 });
 
+const filteredRows = computed(() => {
+	let filteredRows = virtualRows.value;
+
+	if (state.selectedSchoolYear) {
+		for (const year of state.selectedSchoolYear) {
+			filteredRows = filteredRows.filter(
+				(row) =>
+					`${row.school_year_from}-${row.school_year_from + 1}` ===
+					year
+			);
+		}
+	}
+
+	if (state.selectedSemester) {
+		for (const semester of state.selectedSemester) {
+			filteredRows = filteredRows.filter(
+				(row) => row.semester === semester
+			);
+		}
+	}
+
+	if (state.selectedStrand) {
+		for (const strand of state.selectedStrand) {
+			filteredRows = filteredRows.filter((row) => row.strand === strand);
+		}
+	}
+
+	return filteredRows;
+});
+
 const schoolYears = computed(() => {
 	return new Set(
 		state.historicalData.map(
@@ -127,6 +157,24 @@ const addRecord = (e) => {
 	state.isAdding = false;
 };
 
+const downloadAsCSV = () => {
+	const csvRows = [
+		"School Year,Semester,Strand,Enrollees",
+		...virtualRows.value.map((row) => {
+			return `${row.school_year},${row.semester},${row.strand},${row.enrollees}`;
+		}),
+	];
+
+	const csvContent = "data:text/csv;charset=utf-8," + csvRows.join("\n");
+
+	const encodedUri = encodeURI(csvContent);
+	const link = document.createElement("a");
+	link.setAttribute("href", encodedUri);
+	link.setAttribute("download", "enrollment-history.csv");
+	document.body.appendChild(link);
+	link.click();
+};
+
 onMounted(async () => {
 	try {
 		loadHistoricalData();
@@ -210,7 +258,7 @@ onMounted(async () => {
 					auto-select-first="exact"
 					variant="solo-filled"
 					:items="semesterStrings"
-					v-model="state.selectedSchoolYear"
+					v-model="state.selectedSemester"
 					density="compact"
 					multiple
 					label="Semester"
@@ -228,7 +276,7 @@ onMounted(async () => {
 			<v-row>
 				<v-data-table-virtual
 					:headers="headers"
-					:items="virtualRows"
+					:items="filteredRows"
 					v-model:sort-by="sortBy"
 					height="40vh"
 				>
@@ -250,6 +298,7 @@ onMounted(async () => {
 						<v-btn
 							prepend-icon="mdi-content-save-outline"
 							color="primary"
+							@click="downloadAsCSV"
 							>Export
 						</v-btn>
 						<v-btn
